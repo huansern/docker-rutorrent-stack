@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  torrent:
+    container_name: rutorrent
+    build:
+      context: .
+      args:
+        UID: 1000
+        GID: 1000
+    image: rutorrent:stack
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - /home/user/rtorrent/watch:/rtorrent/watch
+      - /home/user/rtorrent/downloads:/rtorrent/downloads
+      - /home/user/rtorrent/log:/rtorrent/log
+      - /home/user/rtorrent/.session:/rtorrent/.session
+      - /home/user/rtorrent/.rtorrent.rc:/rtorrent/.rtorrent.rc
+      - /home/user/rutorrent:/rutorrent
